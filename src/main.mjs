@@ -3,15 +3,17 @@ import * as system from "./_helpers.mjs";
 
 import { BaseActorDataModel } from "./Actor/DataModel/BaseActorDataModel.mjs";
 import { BaseActorSheet } from "./Actor/Sheet/BaseActorSheet.mjs";
-
+CONFIG.debug.hooks = true;
 
 Hooks.once("init", () => {
   console.log(system.Consts.SYSTEMID + " | Initialisation du système " + system.Consts.SYSTEMID);
   system.Base.init();
   
+  system.Settings.fct.registerSettings();
+  
   system.Base.Helpers.Handlebars.registerFunctions();
 
-  //system.DiceRoller.fct.registerDiceRolls();
+  system.DiceRoll.fct.registerDiceRolls();
 
   system.Base.ChatMessage.DynamicChatMessageManager.init();
 

@@ -1,3 +1,176 @@
 <div>
-    carac
+    <div class="caracs">
+        <div class="flexcols">
+            <div class="field">
+                <label>{{localizeSystem "sheet.actor.carac.corps"}}</label>
+                <div>{{ fieldOrInput "system.carac.corps.value" class="pj-sheet-input" }}</div>
+            </div>
+            <div class="field">
+                <label>{{localizeSystem "sheet.actor.carac.adresse"}}</label>
+                <div>{{ fieldOrInput "system.carac.adresse.value" class="pj-sheet-input" }}</div>
+            </div>
+        </div>
+        <div class="flexcols">
+            <div class="field">
+                <label>{{localizeSystem "sheet.actor.carac.savoir"}}</label>
+                <div>{{ fieldOrInput "system.carac.savoir.value" class="pj-sheet-input" }}</div>
+            </div>
+            <div class="field">
+                <label>{{localizeSystem "sheet.actor.carac.perception"}}</label>
+                <div>{{ fieldOrInput "system.carac.perception.value" class="pj-sheet-input" }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="competences">
+        <table>
+            <tbody>
+                <tr>
+                    <th>{{localizeSystem "sheet.actor.competences.caracteristiques"}}</th>
+                    <th>{{localizeSystem "sheet.actor.carac.corps"}}</th>
+                    <th>{{localizeSystem "sheet.actor.carac.adresse"}}</th>
+                    <th>{{localizeSystem "sheet.actor.carac.savoir"}}</th>
+                    <th>{{localizeSystem "sheet.actor.carac.perception"}}</th>
+                </tr>
+                <tr>
+                    <th>{{localizeSystem "sheet.actor.carac.corps"}}</th>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="prouesse">{{localizeSystem "sheet.actor.competences.prouesse"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.prouesse.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.prouesse.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.prouesse.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="combat">{{localizeSystem "sheet.actor.competences.combat"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.combat.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.combat.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.combat.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="soin">{{localizeSystem "sheet.actor.competences.soin"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.soin.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.soin.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.soin.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="charisme">{{localizeSystem "sheet.actor.competences.charisme"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.charisme.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.charisme.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.charisme.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{localizeSystem "sheet.actor.carac.adresse"}}</th>
+                    <td></td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="esquive">{{localizeSystem "sheet.actor.competences.esquive"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.esquive.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.esquive.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.esquive.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="bricolage">{{localizeSystem "sheet.actor.competences.bricolage"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.bricolage.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.bricolage.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.bricolage.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="reflexe">{{localizeSystem "sheet.actor.competences.reflexe"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.reflexe.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.reflexe.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.reflexe.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{localizeSystem "sheet.actor.carac.savoir"}}</th>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="logique">{{localizeSystem "sheet.actor.competences.logique"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.logique.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.logique.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.logique.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="enquete">{{localizeSystem "sheet.actor.competences.enquete"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.enquete.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.enquete.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.enquete.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{{localizeSystem "sheet.actor.carac.perception"}}</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <label data-action="rollCompetence" data-competence="vigilance">{{localizeSystem "sheet.actor.competences.vigilance"}}</label>
+                        <div>
+                            <span class="total">{{ system.competences.vigilance.total }}</span>
+                        </div>
+                        {{#if playWithMalus }}
+                            <div>
+                                <span class="initial">({{ system.competences.vigilance.value }}</span>
+                                <span class="malus">&nbsp;-&nbsp;{{ fieldOrInput "system.competences.vigilance.malus" class="pj-sheet-input" }})</span>
+                            </div>
+                        {{/if}}
+                    </td>
+                </tr>   
+            </tbody>
+        </table>
+    </div>
 </div>

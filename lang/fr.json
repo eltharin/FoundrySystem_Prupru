@@ -1,3 +1,82 @@
 {
-    
+    "TYPES": {
+        "Actor": {
+            "actor" : "Feuille de personnage"
+        },
+        "Item": {
+            "item" : "Feuille d'item"
+        }
+    },
+    "prupru": {
+        "settings": {
+            "enableMalus": "Activer la gestion des malus"
+        },
+        "sheet": {
+            "common": {
+                "nom": "Nom",
+                "notes": {
+                    "titre" : "Notes"
+                },
+                "lock" : "Verrouiller la fiche",
+                "unlock" : "Déverrouiller la fiche"
+            },
+            "actor": {
+                "tabs": {
+                    "main" : "Caractéristiques",
+                    "perso": "Personnage",
+                    "items": "Items",
+                    "notes": "Notes",
+                    "GM" : "MJ"
+                },
+                "carac":{
+                    "corps": "Corps",
+                    "adresse": "Adresse",
+                    "savoir": "Savoir",
+                    "perception": "Perception"
+                },
+                "competences": {
+                    "caracteristiques": "Caracteristiques",
+                    "prouesse": "Prouesse",
+                    "combat": "Combat",
+                    "esquive": "Esquive",
+                    "soin": "Soin",
+                    "bricolage": "Bricolage",
+                    "logique": "Logique",
+                    "charisme": "Charisme",
+                    "reflexe": "Reflexe",
+                    "enquete": "Enquete",
+                    "vigilance": "Vigilance"
+                },
+                "perso": {
+                    "titre" : "Personnage",
+                    "age" : "Age",
+                    "situationFamiliale" : "Situation Familiale",
+                    "metier" : "Métier",
+                    "loisirs" : "Loisirs",
+                    "projet" : "Projet",
+                    "valeursMorales" : "Valeurs Morales",
+                    "secret" : "Secret",
+                    "firete" : "Fierté",
+                    "trauma" : "Trauma"
+                },
+                "items": {
+                    "titre" : "Items du perso",
+                    "ajoutbtn": "Ajouter un Item",
+                    "edit": "Modifier l'item",
+                    "delete": "Supprimer l'item"
+                }
+            }
+        },
+        "roll":{
+            "common": {
+                "total": "Total : {total}",
+                "reussite" : "Réussite",
+                "echec": "Echec"
+            },
+            "competence": {
+                "titre": "Jet de compétence : {competence}",
+                "seuil": "Seuil : {seuil}"
+            }
+        }
+    }    
 }

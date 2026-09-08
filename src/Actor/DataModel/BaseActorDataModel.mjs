@@ -79,35 +79,42 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
     prepareDerivedData() {
 
         this.competences.prouesse.value = this.carac.corps.value + this.carac.corps.value;
-        this.competences.prouesse.total = this.competences.prouesse.value - this.competences.prouesse.malus;
-        
-        this.competences.combat = this.carac.corps.value + this.carac.adresse.value; 
-        this.competences.combat = this.competences.combat.value - this.competences.combat.malus;
+        this.competences.combat.value = this.carac.corps.value + this.carac.adresse.value; 
+        this.competences.esquive.value = this.carac.adresse.value + this.carac.adresse.value;
+        this.competences.soin.value = this.carac.corps.value + this.carac.savoir.value;
+        this.competences.bricolage.value = this.carac.adresse.value + this.carac.savoir.value;
+        this.competences.logique.value = this.carac.savoir.value + this.carac.savoir.value;
+        this.competences.charisme.value = this.carac.corps.value + this.carac.perception.value;
+        this.competences.reflexe.value = this.carac.adresse.value + this.carac.perception.value;
+        this.competences.enquete.value = this.carac.savoir.value + this.carac.perception.value;
+        this.competences.vigilance.value = this.carac.perception.value + this.carac.perception.value;
 
-        this.competences.esquive = this.carac.adresse.value + this.carac.adresse.value;
-        this.competences.esquive = this.competences.esquive.value - this.competences.esquive.malus;
-
-        this.competences.soin = this.carac.corps.value + this.carac.savoir.value;
-        this.competences.soin = this.competences.soin.value - this.competences.soin.malus;
-
-        this.competences.bricolage = this.carac.adresse.value + this.carac.savoir.value;
-        this.competences.bricolage = this.competences.bricolage.value - this.competences.bricolage.malus;
-
-        this.competences.logique = this.carac.savoir.value + this.carac.savoir.value;
-        this.competences.logique = this.competences.logique.value - this.competences.logique.malus;
-
-        this.competences.charisme = this.carac.corps.value + this.carac.perception.value;
-        this.competences.charisme = this.competences.charisme.value - this.competences.charisme.malus;
-
-        this.competences.reflexe = this.carac.adresse.value + this.carac.perception.value;
-        this.competences.reflexe = this.competences.reflexe.value - this.competences.reflexe.malus;
-
-        this.competences.enquete = this.carac.savoir.value + this.carac.perception.value;
-        this.competences.enquete = this.competences.enquete.value - this.competences.enquete.malus;
-
-        this.competences.vigilance = this.carac.perception.value + this.carac.perception.value;
-        this.competences.vigilance = this.competences.vigilance.value - this.competences.vigilance.malus;
-
+        if(game.settings.get(system.Consts.SYSTEMID, "enableMalus"))
+        {
+            this.competences.prouesse.total = this.competences.prouesse.value - this.competences.prouesse.malus;
+            this.competences.combat.total = this.competences.combat.value - this.competences.combat.malus;
+            this.competences.esquive.total = this.competences.esquive.value - this.competences.esquive.malus;
+            this.competences.soin.total = this.competences.soin.value - this.competences.soin.malus;
+            this.competences.bricolage.total = this.competences.bricolage.value - this.competences.bricolage.malus;
+            this.competences.logique.total = this.competences.logique.value - this.competences.logique.malus;
+            this.competences.charisme.total = this.competences.charisme.value - this.competences.charisme.malus;
+            this.competences.reflexe.total = this.competences.reflexe.value - this.competences.reflexe.malus;
+            this.competences.enquete.total = this.competences.enquete.value - this.competences.enquete.malus;
+            this.competences.vigilance.total = this.competences.vigilance.value - this.competences.vigilance.malus;
+        }
+        else
+        {
+            this.competences.prouesse.total = this.competences.prouesse.value;
+            this.competences.combat.total = this.competences.combat.value;
+            this.competences.esquive.total = this.competences.esquive.value;
+            this.competences.soin.total = this.competences.soin.value;
+            this.competences.bricolage.total = this.competences.bricolage.value;
+            this.competences.logique.total = this.competences.logique.value;
+            this.competences.charisme.total = this.competences.charisme.value;
+            this.competences.reflexe.total = this.competences.reflexe.value;
+            this.competences.enquete.total = this.competences.enquete.value;
+            this.competences.vigilance.total = this.competences.vigilance.value;
+        }
     }
 
     getSacrificesCards() {

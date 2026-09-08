@@ -1,0 +1,120 @@
+
+.mysystem-sheet {
+    display:flex;
+    flex-direction: row;
+    
+    min-height: 0;
+    gap: 5px;
+
+
+
+   .sidebar{
+        width: 220px;
+        display:flex;
+        flex-direction: column;
+
+        > .sidebar_content {
+            overflow-y: auto;
+
+            > .sheet-tabs {
+                flex-direction: column;
+                --color-tabs-border: transparent;
+                gap:0.5rem;
+                margin: 1rem 0;
+
+                > a {
+                    border: 1px solid white;
+                    border-radius:10px;
+                    width:100%;
+                    
+
+                    &.active {
+                        background-color:lightgray;
+                        color:midnightblue;
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    main{
+        flex: 1 0 200px;
+        display:flex;
+        flex-direction: column;
+    
+
+        > .main {
+            min-height:0;
+            display:flex;
+            flex-direction: column;
+        
+
+            > .tabscontainer{
+                min-height:0;
+                display:flex;
+                flex-direction: column;
+
+                > section{
+                    overflow-y: auto;
+                }
+
+                .competences {
+                    table > tbody > tr > td {
+                        text-align: center;
+                        > label {
+                            font-size:18px;
+                        }
+
+                        > div {
+                            display:flex;
+                            flex-direction:row;
+                            justify-content: center;
+
+                            > span{
+                                line-height:2rem;
+                            }
+                            > span.malus {
+                                
+                                display:flex;
+                                > input{
+                                    width:40px;
+                                }
+                            }
+                            > span.total {
+                                font-weight:bold;
+                                font-size:18px;
+                                margin-left: 5px;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .field ~ .field{
+            margin-top:20px;
+        }
+
+        .tabitem {
+            .lignetab{
+                display:flex;
+
+                >* {
+                    flex-grow : 1;
+                }
+                >span.action {
+                    flex : 0 0 50px;
+                }
+
+                
+            }
+
+            > :nth-child(2n) {
+                background-color: var(--table-row-color-even);
+            }
+        }
+    }
+}

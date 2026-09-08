@@ -1,0 +1,14 @@
+<div class="dice-roll" data-action="expandRoll">
+    <div class="dice-result">
+        <span class="flavor-text" style="">{{localizeSystem "roll.competence.titre" competence=competence}}</span>
+
+        <div class="dice-formula">{{localizeSystem "roll.competence.seuil" seuil=seuil}}</div>
+        
+        {{{tooltip}}}
+
+        <div class="dice-formula">{{localizeSystem "roll.common.total" total=total }}</div>
+
+        <h4 class="dice-total" >{{#if result}}{{localizeSystem "roll.common.reussite" }}{{else}}{{localizeSystem "roll.common.echec" }}{{/if}}</h4>
+
+    </div>
+</div>

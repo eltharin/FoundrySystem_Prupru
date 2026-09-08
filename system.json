@@ -30,6 +30,7 @@
       "actor": {  }
     },
     "Item": {
+      "item": {}
     }
   },
   "socket": false,
