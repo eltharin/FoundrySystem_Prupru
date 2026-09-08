@@ -1,7 +1,7 @@
 {
-  "id": "#######",
-  "title": "#######",
-  "description": "####### system for foundryVTT.",
+  "id": "prupru",
+  "title": "PruPru",
+  "description": "PruPru system for foundryVTT.",
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 13,
