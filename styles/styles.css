@@ -12,7 +12,12 @@
         width: 220px;
         display:flex;
         flex-direction: column;
-
+        > .image {
+            max-height: 180px;
+            height: 180%;
+            display: flex;
+            justify-content: center;
+        }
         > .sidebar_content {
             overflow-y: auto;
 
@@ -34,6 +39,69 @@
                     }
                 }
             }
+
+
+            > .ptsContainer { 
+                > .points {
+                    display:flex;
+                    flex-direction:row;
+
+                    > .ptscontrol {
+                        width:1.5em;
+                        height:1.5em;
+                        font-size : 1.5em;
+                        border:1px solid lightgray;
+                        border-radius: 0.6em;
+                        text-align: center;
+
+                        &:hover{
+                            background-color:grey;
+                            color:white;
+                        }
+                    }
+                    > .pts {
+                        flex-grow : 1;
+                        > span{
+                        
+                            display:inline-block;
+                            width:1.5em;
+                            height:1.5em;
+                            background-color: white;
+
+                            &.active{
+                                background-color: red;
+                            }
+                        }
+
+                        &.blessure.legere > span {
+                            mask: url("../assets/pics/blessure_legere.svg") no-repeat center / contain;
+                            -webkit-mask: url("../assets/pics/blessure_legere.svg") no-repeat center / contain;
+                        }
+
+                        &.blessure.moyenne > span {
+                            mask: url("../assets/pics/blessure_moyenne.svg") no-repeat center / contain;
+                            -webkit-mask: url("../assets/pics/blessure_moyenne.svg") no-repeat center / contain;
+                        }
+
+                        &.blessure.grave > span {
+                            mask: url("../assets/pics/blessure_grave.svg") no-repeat center / contain;
+                            -webkit-mask: url("../assets/pics/blessure_grave.svg") no-repeat center / contain;
+                        }
+
+                        &.volonte > span {
+                            mask: url("../assets/pics/pts_volonte.svg") no-repeat center / contain;
+                            -webkit-mask: url("../assets/pics/pts_volonte.svg") no-repeat center / contain;
+                        }
+
+                        &.stress > span {
+                            mask: url("../assets/pics/pts_stress.svg") no-repeat center / contain;
+                            -webkit-mask: url("../assets/pics/pts_stress.svg") no-repeat center / contain;
+                        }
+                        
+                    }
+                }
+            }
+
         }
 
         

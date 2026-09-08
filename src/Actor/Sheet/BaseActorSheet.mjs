@@ -33,10 +33,10 @@ export class BaseActorSheet extends system.Base.BaseSheet(
             template: system.Consts.TEMPLATES_PATH + "/actor/parts/notes.hbs",
             container: { id: "form", element: ".tabscontainer" },
         },
-        /*mj: {
+        mj: {
           template: system.Consts.TEMPLATES_PATH + "/actor/parts/mj.hbs",
           container: { id: "form" , element: ".tabscontainer" },
-        },*/
+        },
     };
 
     static TABS = {
@@ -46,7 +46,7 @@ export class BaseActorSheet extends system.Base.BaseSheet(
                 { id: "perso", label: system.Consts.SYSTEMID + ".sheet.actor.tabs.perso" },
                 { id: "items", label: system.Consts.SYSTEMID + ".sheet.actor.tabs.items" },
                 { id: "notes", label: system.Consts.SYSTEMID + ".sheet.actor.tabs.notes" },
-                // {id: "mj", label: system.Consts.SYSTEMID + ".sheet.actor.tabs.GM", condition: () => game.user.isGM,},
+                {id: "mj", label: system.Consts.SYSTEMID + ".sheet.actor.tabs.GM", condition: () => game.user.isGM,},
             ],
             initial: "main",
         }
@@ -65,6 +65,8 @@ export class BaseActorSheet extends system.Base.BaseSheet(
             deleteItem: this._onDeleteItem,
 
             rollCompetence: this.onRollCompetence,
+            addRemovePts: this.onAddRemovePts,
+            addRemoveBlessure: this.onAddRemoveBlessure
 
         },
         position: {
@@ -244,4 +246,25 @@ export class BaseActorSheet extends system.Base.BaseSheet(
         }
     }
 
+    static async onAddRemovePts(event, tagregt)
+    {
+        console.log(event.target.dataset.sens, event.target.dataset.pointtype);
+        this.document.update({["system." + event.target.dataset.pointtype + ".value"]: this.document.system[event.target.dataset.pointtype].value + (event.target.dataset.sens == '+' ? 1 : -1)});
+    }
+
+    static async onAddRemoveBlessure(event, tagregt)
+    {
+        console.log(event.target.dataset.sens, event.target.dataset.pointtype);
+          switch (true) {
+            case (event.target.dataset.sens == '+' && event.target.dataset.pointtype == 'legere' ): this.document.system.addBlessureLegere(); break;
+            case (event.target.dataset.sens == '-' && event.target.dataset.pointtype == 'legere' ): this.document.system.removeBlessureLegere(); break;
+            case (event.target.dataset.sens == '+' && event.target.dataset.pointtype == 'moyenne' ): this.document.system.addBlessureMoyenne(); break;
+            case (event.target.dataset.sens == '-' && event.target.dataset.pointtype == 'moyenne' ): this.document.system.removeBlessureMoyenne(); break;
+            case (event.target.dataset.sens == '+' && event.target.dataset.pointtype == 'grave' ): this.document.system.addBlessureGrave(); break;
+            case (event.target.dataset.sens == '-' && event.target.dataset.pointtype == 'grave' ): this.document.system.removeBlessureGrave(); break;
+            default: return null;
+        }
+        
+        this.document.update({["system.blessures"]: this.document.system.blessures});
+    }
 }

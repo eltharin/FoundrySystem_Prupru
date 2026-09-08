@@ -5,8 +5,77 @@
 <div class="sidebar_content">
 
     <div class="field nom">
-        <label>{{localize (concat (SYSTEMID) ".sheet.common.nom")}}</label>
+        <label>{{localizeSystem "sheet.common.nom"}}</label>
         <div>{{ fieldOrInput "name" class="pj-sheet-input" value=document.name}}</div>
+    </div>
+
+    <div class="ptsContainer ">
+        <div>{{localizeSystem "sheet.actor.pts.blessures.titre"}}</div>
+        <div class="points">
+            <span class="ptscontrol" data-action="addRemoveBlessure" data-pointtype="legere" data-sens="-">-</span>
+            <span class="pts blessure legere">
+                {{#times system.blessures.legere.value }}
+                    <span class="active"></span>
+                {{/times}}
+                {{#times system.blessures.legere.nope }}
+                    <span></span>
+                {{/times}}
+            </span>
+            <span class="ptscontrol" data-action="addRemoveBlessure" data-pointtype="legere" data-sens="+">+</span>
+        </div>
+        <div class="points">
+            <span class="ptscontrol" data-action="addRemoveBlessure" data-pointtype="moyenne" data-sens="-">-</span>
+            <span class="pts blessure moyenne">
+                {{#times system.blessures.moyenne.value }}
+                    <span class="active"></span>
+                {{/times}}
+                {{#times system.blessures.moyenne.nope }}
+                    <span></span>
+                {{/times}}
+            </span>
+            <span class="ptscontrol" data-action="addRemoveBlessure" data-pointtype="moyenne" data-sens="+">+</span>
+        </div>
+        <div class="points">
+            <span class="ptscontrol" data-action="addRemoveBlessure" data-pointtype="grave" data-sens="-">-</span>
+            <span class="pts blessure grave">
+                {{#times system.blessures.grave.value }}
+                    <span class="active"></span>
+                {{/times}}
+                {{#times system.blessures.grave.nope }}
+                    <span></span>
+                {{/times}}
+            </span>
+            <span class="ptscontrol" data-action="addRemoveBlessure" data-pointtype="grave" data-sens="+">+</span>
+        </div>
+
+        
+        <div>{{localizeSystem "sheet.actor.pts.stress.titre"}}</div>
+        <div class="points ">
+            <span class="ptscontrol" data-action="addRemovePts" data-pointtype="stress" data-sens="-">-</span>
+            <span class="pts stress">
+                {{#times system.stress.value }}
+                    <span class="active"></span>
+                {{/times}}
+                {{#times system.stress.nope }}
+                    <span></span>
+                {{/times}}
+            </span>
+            <span class="ptscontrol" data-action="addRemovePts" data-pointtype="stress" data-sens="+">+</span>
+        </div>
+        
+        <div>{{localizeSystem "sheet.actor.pts.volonte.titre"}}</div>
+        <div class="points ">
+            <span class="ptscontrol" data-action="addRemovePts" data-pointtype="volonte" data-sens="-">-</span>
+            <span class="pts volonte">
+                {{#times system.volonte.value }}
+                    <span class="active"></span>
+                {{/times}}
+                {{#times system.volonte.nope }}
+                    <span></span>
+                {{/times}}
+            </span>
+            <span class="ptscontrol" data-action="addRemovePts" data-pointtype="volonte" data-sens="+">+</span>
+        </div>
     </div>
 
     {{{tabs.sheet.html}}}

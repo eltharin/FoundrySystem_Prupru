@@ -64,6 +64,27 @@
                     "ajoutbtn": "Ajouter un Item",
                     "edit": "Modifier l'item",
                     "delete": "Supprimer l'item"
+                },
+                "pts": {
+                    "blessures": {
+                        "titre" : "Blessures"
+                    },
+                    "stress": {
+                        "titre" : "Stress"
+                    },
+                    "volonte": {
+                        "titre" : "Volonte"
+                    }
+                },
+                "mj": {
+                    "titre": "Gestion des variables de persos",
+                    "blessures": {
+                        "legere": "Blessures Légères / 1 Moyenne(-1 pour défaut)",
+                        "moyenne": "Blessures Moyennes / 1 Grave(-1 pour défaut)",
+                        "grave": "Blessures Graves max(-1 pour défaut)"
+                    },
+                    "volonte": "Volonté max (-1 pour défaut)",
+                    "stress": "Stress max (-1 pour défaut)"
                 }
             }
         },

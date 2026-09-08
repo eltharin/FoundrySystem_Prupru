@@ -67,13 +67,36 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
                 }),
             }),
 
-            
+            blessures: new foundry.data.fields.SchemaField({
+                legere: new foundry.data.fields.SchemaField({
+                    value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
+                    max: new foundry.data.fields.NumberField({initial: -1})
+                }),
+                moyenne: new foundry.data.fields.SchemaField({
+                    value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
+                    max: new foundry.data.fields.NumberField({initial: -1})
+                }),
+                grave: new foundry.data.fields.SchemaField({
+                    value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
+                    max: new foundry.data.fields.NumberField({initial: -1})
+                }),
+            }),
+
+            volonte: new foundry.data.fields.SchemaField({
+                value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
+                max: new foundry.data.fields.NumberField({initial: -1})
+            }),
+            stress: new foundry.data.fields.SchemaField({
+                value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
+                max: new foundry.data.fields.NumberField({initial: -1})
+            }),
         };
     }
 
     static preSaveFunctions = [
         ...super.preSaveFunctions,
-        
+        "verifPts",
+        "verifBlessures",
     ];
 
     prepareDerivedData() {
@@ -115,6 +138,37 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             this.competences.enquete.total = this.competences.enquete.value;
             this.competences.vigilance.total = this.competences.vigilance.value;
         }
+
+        if(this.blessures.legere.max == -1)
+        {
+            this.blessures.legere.max = 4;
+        }
+
+        if(this.blessures.moyenne.max == -1)
+        {
+            this.blessures.moyenne.max = 4;
+        }
+
+        if(this.blessures.grave.max == -1)
+        {
+            this.blessures.grave.max = this.carac.corps.value / 2;
+        }
+
+        if(this.volonte.max == -1)
+        {
+            this.volonte.max = Math.floor((this.carac.corps.value + this.carac.savoir.value) / 4);
+        }
+
+        if(this.stress.max == -1)
+        {
+            this.stress.max = Math.floor((this.carac.corps.value + this.carac.savoir.value) / 4);
+        }
+
+        this.blessures.legere.nope = this.blessures.legere.max - this.blessures.legere.value -1;
+        this.blessures.moyenne.nope = this.blessures.moyenne.max - this.blessures.moyenne.value -1;
+        this.blessures.grave.nope = this.blessures.grave.max - this.blessures.grave.value;
+        this.stress.nope = this.stress.max - this.stress.value;
+        this.volonte.nope = this.volonte.max - this.volonte.value;
     }
 
     getSacrificesCards() {
@@ -125,4 +179,118 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
 
     }
 
+    verifPts(changes, clone){
+        if(foundry.utils.getProperty(clone, "stress.value") > foundry.utils.getProperty(clone, "stress.max")) 
+        {
+            foundry.utils.setProperty(changes, "system.stress.value", foundry.utils.getProperty(clone, "stress.max") );
+        }
+        if(foundry.utils.getProperty(clone, "volonte.value") > foundry.utils.getProperty(clone, "volonte.max")) 
+        {
+            foundry.utils.setProperty(changes, "system.volonte.value", foundry.utils.getProperty(clone, "volonte.max") );
+        }
+    }
+
+    verifBlessures(changes, clone){
+        if(foundry.utils.getProperty(clone, "blessures.grave.value") > foundry.utils.getProperty(clone, "blessures.grave.max")) 
+        {
+            foundry.utils.setProperty(changes, "system.blessures.grave.value", foundry.utils.getProperty(clone, "blessures.grave.max") );
+        }
+        if(foundry.utils.getProperty(clone, "stress.value") > foundry.utils.getProperty(clone, "stress.max")) 
+        {
+            foundry.utils.setProperty(changes, "system.stress.value", foundry.utils.getProperty(clone, "stress.max") );
+        }
+        if(foundry.utils.getProperty(clone, "volonte.value") > foundry.utils.getProperty(clone, "volonte.max")) 
+        {
+            foundry.utils.setProperty(changes, "system.volonte.value", foundry.utils.getProperty(clone, "volonte.max") );
+        }
+    }
+
+    addBlessureGrave()
+    {
+        if(this.blessures.grave.value >= this.blessures.grave.max)
+        {
+            return false;
+        }
+        this.blessures.grave.value += 1;
+        return true;
+    }
+
+    addBlessureMoyenne()
+    {
+        console.log(this.blessures.moyenne.value, this.blessures.moyenne.max-1)
+        if(this.blessures.moyenne.value < this.blessures.moyenne.max-1)
+        {
+            this.blessures.moyenne.value += 1;
+            return true;
+        }
+
+        if(this.addBlessureGrave())
+        {
+            this.blessures.moyenne.value = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    addBlessureLegere()
+    {
+        if(this.blessures.legere.value < this.blessures.legere.max-1)
+        {
+            this.blessures.legere.value += 1;
+            return true;
+        }
+
+        if(this.addBlessureMoyenne())
+        {
+            this.blessures.legere.value = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    removeBlessureGrave()
+    {
+        if(this.blessures.grave.value == 0)
+        {
+            return false;
+        }
+        this.blessures.grave.value -= 1;
+        return true;
+    }
+
+    removeBlessureMoyenne()
+    {
+        if(this.blessures.moyenne.value > 0)
+        {
+            this.blessures.moyenne.value -= 1;
+            return true;
+        }
+
+        if(this.removeBlessureGrave())
+        {
+            this.blessures.moyenne.value = this.blessures.moyenne.max-1;
+            return true;
+        }
+
+        return false;
+    }
+
+    removeBlessureLegere()
+    {
+        if(this.blessures.legere.value > 0)
+        {
+            this.blessures.legere.value -= 1;
+            return true;
+        }
+
+        if(this.removeBlessureMoyenne())
+        {
+            this.blessures.legere.value = this.blessures.legere.max-1;
+            return true;
+        }
+
+        return false;
+    }
 }
