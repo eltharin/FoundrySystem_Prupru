@@ -70,25 +70,25 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             blessures: new foundry.data.fields.SchemaField({
                 legere: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
-                    max: new foundry.data.fields.NumberField({initial: -1})
+                    maxval: new foundry.data.fields.NumberField({initial: -1})
                 }),
                 moyenne: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
-                    max: new foundry.data.fields.NumberField({initial: -1})
+                    maxval: new foundry.data.fields.NumberField({initial: -1})
                 }),
                 grave: new foundry.data.fields.SchemaField({
                     value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
-                    max: new foundry.data.fields.NumberField({initial: -1})
+                    maxval: new foundry.data.fields.NumberField({initial: -1})
                 }),
             }),
 
             volonte: new foundry.data.fields.SchemaField({
                 value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
-                max: new foundry.data.fields.NumberField({initial: -1})
+                maxval: new foundry.data.fields.NumberField({initial: -1})
             }),
             stress: new foundry.data.fields.SchemaField({
                 value: new foundry.data.fields.NumberField({initial: 0, min: 0}),
-                max: new foundry.data.fields.NumberField({initial: -1})
+                maxval: new foundry.data.fields.NumberField({initial: -1})
             }),
         };
     }
@@ -139,29 +139,49 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
             this.competences.vigilance.total = this.competences.vigilance.value;
         }
 
-        if(this.blessures.legere.max == -1)
+        if(this.blessures.legere.maxval == -1)
         {
             this.blessures.legere.max = 4;
         }
+        else
+        {
+            this.blessures.legere.max = this.blessures.legere.maxval;
+        }
 
-        if(this.blessures.moyenne.max == -1)
+        if(this.blessures.moyenne.maxval == -1)
         {
             this.blessures.moyenne.max = 4;
         }
-
-        if(this.blessures.grave.max == -1)
+        else
         {
-            this.blessures.grave.max = this.carac.corps.value / 2;
+            this.blessures.moyenne.max = this.blessures.moyenne.maxval;
         }
 
-        if(this.volonte.max == -1)
+        if(this.blessures.grave.maxval == -1)
+        {
+            this.blessures.grave.max = Math.floor(this.carac.corps.value / 2);
+        }
+        else
+        {
+            this.blessures.grave.max = this.blessures.grave.maxval;
+        }
+
+        if(this.volonte.maxval == -1)
         {
             this.volonte.max = Math.floor((this.carac.corps.value + this.carac.savoir.value) / 4);
         }
+        else
+        {
+            this.volonte.max = this.volonte.maxval;
+        }
 
-        if(this.stress.max == -1)
+        if(this.stress.maxval == -1)
         {
             this.stress.max = Math.floor((this.carac.corps.value + this.carac.savoir.value) / 4);
+        }
+        else
+        {
+            this.stress.max = this.stress.maxval;
         }
 
         this.blessures.legere.nope = this.blessures.legere.max - this.blessures.legere.value -1;
