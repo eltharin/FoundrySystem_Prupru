@@ -171,13 +171,13 @@ export class BaseActorSheet extends system.Base.BaseSheet(
             actor: this.document.uuid,
         });
 
-        await myRoll.toMessage({
+        let myMessage = await myRoll.toMessage({
             speaker: ChatMessage.getSpeaker({ alias: this.document.name + " ( " + game.user.name + " )" }),
         });
 
         if(myRoll.isSuccess())
         {
-
+            await game.dice3d?.waitFor3DAnimationByMessageID(myMessage._id); 
             this.document.update({["system.competences." + competence + ".malus"]: this.document.system.competences[competence].malus +1});
         }        
 
