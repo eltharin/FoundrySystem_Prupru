@@ -1,24 +1,31 @@
 <div>
-    <div class="caracs">
-        <div class="flexcols">
-            <div class="field">
-                <label>{{localizeSystem "sheet.actor.carac.corps"}}</label>
-                <div>{{ fieldOrInput "system.carac.corps.value" class="pj-sheet-input" }}</div>
+    <div class="flexcols">
+        <div class="caracs">
+            <div class="flexcols">
+                <div class="field">
+                    <label>{{localizeSystem "sheet.actor.carac.corps"}}</label>
+                    <div>{{ fieldOrInput "system.carac.corps.value" class="pj-sheet-input" }}</div>
+                </div>
+                <div class="field">
+                    <label>{{localizeSystem "sheet.actor.carac.adresse"}}</label>
+                    <div>{{ fieldOrInput "system.carac.adresse.value" class="pj-sheet-input" }}</div>
+                </div>
             </div>
-            <div class="field">
-                <label>{{localizeSystem "sheet.actor.carac.adresse"}}</label>
-                <div>{{ fieldOrInput "system.carac.adresse.value" class="pj-sheet-input" }}</div>
+            <div class="flexcols">
+                <div class="field">
+                    <label>{{localizeSystem "sheet.actor.carac.savoir"}}</label>
+                    <div>{{ fieldOrInput "system.carac.savoir.value" class="pj-sheet-input" }}</div>
+                </div>
+                <div class="field">
+                    <label>{{localizeSystem "sheet.actor.carac.perception"}}</label>
+                    <div>{{ fieldOrInput "system.carac.perception.value" class="pj-sheet-input" }}</div>
+                </div>
             </div>
         </div>
-        <div class="flexcols">
-            <div class="field">
-                <label>{{localizeSystem "sheet.actor.carac.savoir"}}</label>
-                <div>{{ fieldOrInput "system.carac.savoir.value" class="pj-sheet-input" }}</div>
-            </div>
-            <div class="field">
-                <label>{{localizeSystem "sheet.actor.carac.perception"}}</label>
-                <div>{{ fieldOrInput "system.carac.perception.value" class="pj-sheet-input" }}</div>
-            </div>
+        <div class="actionscol">
+            <span class="repos button button_image" data-action="repos">
+                
+            </span>
         </div>
     </div>
 

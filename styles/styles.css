@@ -126,6 +126,49 @@
 
                 > section{
                     overflow-y: auto;
+                    position:relative;
+
+                    .actionscol {
+                        flex: 0 0 30px;
+                        display:flex;
+                        flex-direction:column;
+                        gap:3px;
+
+                        > span {
+                            width:28px;
+                            height:28px;
+
+                        }
+                    }
+
+                    > .actions {
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;
+                        height:35px;
+                        width:35px;
+
+                        > .action {
+                            padding: 8px;
+                            border: 2px solid lightgray;
+                            width: auto;
+                            display: inherit;
+                            border-radius: 10px;
+                            color: white;
+                            height:100%;
+
+                            img {
+                                height:100%;
+                            }
+                        }
+                    }
+
+                    &[data-tab="main"]{
+                        .actionscol > .repos {
+                                --img-bg-url : url("../../assets/pics/repos.svg");
+                            }
+                        }
+                    }
                 }
 
                 .competences {
@@ -165,6 +208,7 @@
         .field ~ .field{
             margin-top:20px;
         }
+
 
         .tabitem {
             .lignetab{

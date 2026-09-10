@@ -2,8 +2,13 @@
 
     <h2>
         <span>{{localizeSystem "sheet.actor.items.titre"}}</span>
-        <span class="action add button" data-action="addItem" data-type="item" title="{{localizeSystem "sheet.actor.items.ajout"}}">{{localizeSystem "sheet.actor.items.ajoutbtn"}}</span>
     </h2>
+
+    <div class="actions">
+        <span class="action button add_button button_image" data-action="addItem" data-type="item" title="{{localizeSystem "sheet.actor.items.ajout"}}">
+            
+        </span>
+    </div>
 
     <div class="tabitem">
         {{#each items as |item|}}

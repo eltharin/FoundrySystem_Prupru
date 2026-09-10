@@ -191,8 +191,19 @@ export class BaseActorDataModel extends system.Base.SystemDataModel {
         this.volonte.nope = this.volonte.max - this.volonte.value;
     }
 
-    getSacrificesCards() {
-        this.sacrificesCards = this.sacrificeDeckId ? game.cards.get(this.sacrificeDeckId)?.availableCards : [];
+    getUpdateClearMalus() {
+        return {
+            "system.competences.prouesse.malus": 0,
+            "system.competences.combat.malus": 0,
+            "system.competences.esquive.malus": 0,
+            "system.competences.soin.malus": 0,
+            "system.competences.bricolage.malus": 0,
+            "system.competences.logique.malus": 0,
+            "system.competences.charisme.malus": 0,
+            "system.competences.reflexe.malus": 0,
+            "system.competences.enquete.malus": 0,
+            "system.competences.vigilance.malus": 0,
+        };
     }
 
     _prepareDerivedData() {

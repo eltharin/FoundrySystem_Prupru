@@ -1,3 +1,4 @@
+import { Dialog } from "../../../systemBase/src/Dialog.mjs";
 import * as system from "../../_helpers.mjs";
 
 
@@ -64,6 +65,7 @@ export class BaseActorSheet extends system.Base.BaseSheet(
             editItem: this._onEditItem,
             deleteItem: this._onDeleteItem,
 
+            repos: this.onRepos,
             rollCompetence: this.onRollCompetence,
             addRemovePts: this.onAddRemovePts,
             addRemoveBlessure: this.onAddRemoveBlessure
@@ -267,4 +269,20 @@ export class BaseActorSheet extends system.Base.BaseSheet(
         
         this.document.update({["system.blessures"]: this.document.system.blessures});
     }
+
+    static async onRepos(event, tagregt)
+    {
+        const confirmed = await system.Base.Dialog.confirm({
+          content: `<p>${game.i18n.format(system.Consts.SYSTEMID + ".sheet.actor.repos.yousure")}</p>`,
+          modal: true
+        });
+
+        if (confirmed) 
+        {
+            const update = this.document.system.getUpdateClearMalus();
+            this.document.update(update);
+            ui.notifications.info(game.i18n.format(system.Consts.SYSTEMID + ".sheet.actor.repos.reposok"));
+        }
+    }
+    
 }

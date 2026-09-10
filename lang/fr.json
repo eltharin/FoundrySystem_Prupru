@@ -85,6 +85,10 @@
                     },
                     "volonte": "Volonté max (-1 pour défaut)",
                     "stress": "Stress max (-1 pour défaut)"
+                },
+                "repos": {
+                    "yousure": "Voulez vous effectuer un repos ?",
+                    "reposok": "Hmm ce bon bain m'a fait du bien."
                 }
             }
         },

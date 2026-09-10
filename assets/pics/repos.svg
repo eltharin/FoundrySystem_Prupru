@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.0"
+   width="1104pt"
+   height="979.90002pt"
+   viewBox="0 0 1104 979.90003"
+   preserveAspectRatio="xMidYMid"
+   id="svg2"
+   sodipodi:docname="repos.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+     transform="matrix(0.1,0,0,-0.1,-87.9,1114.9003)"
+     fill="#000000"
+     stroke="none"
+     id="g2">
+    <path
+       d="m 5485,11075 c -49,-40 -91,-77 -93,-83 -1,-5 185,-297 415,-648 229,-351 417,-646 417,-654 0,-8 -245,-397 -545,-865 C 5379,8358 4185,6497 3025,4690 1866,2883 909,1393 898,1378 l -19,-28 H 2869 4860 V 2740 4130 H 6400 7940 V 2740 1350 h 1990 1989 l -38,58 c -21,31 -288,446 -593,922 -305,476 -1489,2322 -2632,4103 -1143,1782 -2080,3245 -2083,3253 -2,7 175,301 395,653 l 399,639 -94,76 c -51,42 -97,76 -102,76 -5,0 -179,-277 -387,-614 -209,-338 -381,-615 -384,-615 -3,0 -187,281 -408,624 -222,344 -407,625 -410,624 -4,0 -47,-33 -97,-74 z"
+       id="path2" />
+  </g>
+</svg>
